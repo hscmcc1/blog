@@ -1,0 +1,31 @@
+---
+author: hesicong
+comments: true
+date: 2007-02-07 07:20:20+00:00
+layout: post
+slug: yeah
+title: Yeah!
+wordpress_id: 130
+categories:
+- 其他
+tags:
+- opengl
+---
+
+
+骑车来回30公里，帮女生修电脑 ![](images/smilies/Face_03.gif)。可能是氧气比较充足，晚上写程序思路清晰，问题一个一个顺利解决！现在毕业设计已经完成了50％以上了，高兴啊。有空把管子弄上机床，开始加工：)
+. 永远记住，仿射变换是左乘，OpenGL是右乘。保持头脑清晰，做图形学最重要的是矩阵变换要正确。
+
+从父对象到子对象的转换：
+
+```
+childMatrix＝parentMatrix*transformMatrix  ====>
+transformMatrix=Inverse(parentMatrix)*childMatrix
+```
+
+* 树的数据结构很重要，需要更加熟练，经常在树的遍历上出点小问题。
+* 用多种手段进行调试。调试的方法的选择直接关系到找到和解决问题的速度。
+* 经常锻炼，心急的时候出去走走比较好。大脑是需要氧气的。
+
+最终用自己写的程序的渲染效果，各个部件能够运动的，还有碰撞检测。
+![](http://www.hesicong.net/blog/upload/month_0702/Simulation.jpg)

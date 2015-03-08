@@ -1,0 +1,17 @@
+---
+author: hesicong
+comments: true
+date: 2007-09-10 04:04:54+00:00
+layout: post
+slug: back-to-bf2142
+title: 重回BF2142
+wordpress_id: 242
+categories:
+- 生活
+---
+
+终究不是我电脑太好而不要我玩BF2142而是因为CDKEY的问题。
+
+因为之前重装了系统，然后我是重新安装了BF2142的，虽然CDKEY是记录进去了，但是忘了1.25版是要更新CDKEY的。所以还是需要重新安装2142的1.25补丁才能用。
+
+今天重新安装并打了补丁以后，问题解决。终于重返2142~

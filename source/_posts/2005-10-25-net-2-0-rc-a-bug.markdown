@@ -1,0 +1,45 @@
+---
+author: hesicong
+comments: true
+date: 2005-10-25 10:02:42+00:00
+layout: post
+slug: net-2-0-rc-a-bug
+title: .NET 2.0 RC的一个Bug
+wordpress_id: 1414
+categories:
+- 其他
+tags:
+- .net
+---
+
+.NET 2.0 Bug   ——虚拟COM口名出错
+
+今天发现.NET 2.0 RC版本(2.0.50727)的一个BUG：
+
+很简单的一句话
+![](http://www.cnblogs.com/Images/OutliningIndicators/None.gif)Dim ports As String() = System.IO.Ports.SerialPort.GetPortNames()
+
+一般情况下会正常的显示所有的串口名，但是近日发现此函数在处理虚拟COM口时会出现问题。
+
+先说说我电脑上的COM端口的配置：
+COM. COM2：电脑上自带的两个COM端口
+COM9：Siemens CXV65手机红外连接电脑以后虚拟出来的一个Siemens S45 Modem占用。
+COM12：Bluetooth链路上的标准调制解调器#2——为Nokia 6021蓝牙链接以后虚拟的Modem
+
+系统内的配置：
+![](http://images.cnblogs.com/cnblogs_com/hesicong/pic1.jpg)
+ports返回：
+![](http://images.cnblogs.com/cnblogs_com/hesicong/pic2.jpg)
+
+其中COM12返回出错为COM12c，COM9返回为COM92。有些时候会返回COMx和一个随机的乱码。但是物理端口返回参数始终正常。
+
+此后更换红外设备和蓝牙设备的USB接口，重新进行红外和蓝牙连接后，原COM9变为COM13(Siemens S45)，原COM12变为COM14(Nokia 6021蓝牙连接)
+
+结果为：
+![](http://images.cnblogs.com/cnblogs_com/hesicong/pic3.jpg)
+
+端口名还是错误的。
+
+此函数在RC版本之前都是完全正确的，不知道是怎么回事，应该是.NET 2.0 RC的一个Bug吧。
+
+另外问一下：在哪个地方报告一下这个Bug呢？

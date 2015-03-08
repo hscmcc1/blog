@@ -1,0 +1,14 @@
+---
+author: hesicong
+comments: true
+date: 2006-08-25 01:59:13+00:00
+layout: post
+slug: bad-luck
+title: 真倒霉……
+wordpress_id: 38
+categories:
+- 生活
+---
+
+
+给PDA安装了好多个新的软件，其中包含了Pocket Mechanic。心想里面有一个磁盘整理的工具，顺便看看能不能把SD卡整理一下。哎，结果提示完成了以后重新启动，竟然发现SD卡内容为空~！！天啊，用Easy Recovery等等软件都不能找回丢失的文件结构。看来是FAT32的两张表都损坏了……可恶的软件啊……！以后再也不敢用了……

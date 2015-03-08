@@ -1,0 +1,24 @@
+---
+author: hesicong
+comments: true
+date: 2007-05-18 21:23:19+00:00
+layout: post
+slug: c-and-c-co
+title: C++和C#联合！
+wordpress_id: 197
+categories:
+- 其他
+tags:
+- c
+---
+
+
+一直有一种想法就是让C++做底层的工作，然后让C#进行GUI界面的书写。经过一番尝试，终于能够把我的管子生成程序和C#界面融合了。
+[![pipe.jpg](/images/others/thumbs/thumbs_pipe.jpg)](/images/others/pipe.jpg)
+
+使用的技术是C++的IJW技术。通过Managed C++做了一个Wrapper，这样C#就可以间接调用C++的东西了。OpenGL是渲染到C#的一个窗体中的。
+
+具体的技术过段时候在写，现在有些累了，呵呵……
+
+关于IJW技术有一些参考，沐枫小筑的这篇博客给了我巨大的帮助：
+[http://blog.csdn.net/Muf/archive/2006/04/10/656920.aspx](http://blog.csdn.net/Muf/archive/2006/04/10/656920.aspx)

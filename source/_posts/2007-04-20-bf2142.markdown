@@ -1,0 +1,13 @@
+---
+author: hesicong
+comments: true
+date: 2007-04-20 05:10:09+00:00
+layout: post
+slug: bf2142
+title: BF2142
+wordpress_id: 185
+categories:
+- 其他
+---
+
+[![](http://sigs.2142-stats.com/hesicong.net+player+406.png)](http://sigs.2142-stats.com/hesicong.net+stats.html)

@@ -1,0 +1,31 @@
+---
+author: hesicong
+comments: true
+date: 2009-12-24 10:52:27+00:00
+layout: post
+slug: christmas-2
+title: 圣诞节
+wordpress_id: 2122
+categories:
+- 生活
+tags:
+- 圣诞节
+---
+
+早上大雾，下午天气好转
+
+圣诞节与我无关，继续改BUG
+
+小妹的笔记本估计进水弄坏了
+
+晚上购物，打游戏，研究微分几何
+
+再看看几年前的TimeMachine，我当时在圣诞节做些什么：
+
+2008年：[cref 1490]
+2007年：[cref 286]
+2006年：[cref 110]
+2005年：未知
+2004年：应该是和女朋友在春熙路上玩~
+
+购物~

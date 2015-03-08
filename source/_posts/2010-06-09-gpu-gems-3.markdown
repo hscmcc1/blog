@@ -1,0 +1,22 @@
+---
+author: hesicong
+comments: true
+date: 2010-06-09 04:04:58+00:00
+layout: post
+slug: gpu-gems-3
+title: GPU精粹3 中文版上市
+wordpress_id: 2408
+categories:
+- 其他
+tags:
+- gpu gems 3
+- nvidia
+- 书
+- 精粹
+---
+
+前几天订书的时候无意间发现了 GPU精粹3 已经上市，其前作1,2的中文版我都有。第一版的几乎是黑白的，不怎么好看，对于一些图的表现上明显欠佳。第二版就改成了全彩色的，和原著一样，翻译也翻译的很到位，具有很强的可读性。第三版在两年前就有英文版了，并且NVIDIA官方已经将[电子版](http://developer.nvidia.com/object/gpu-gems-3.html)公开，所以对于英文好的朋友没有必要去购买中文版本了。
+
+![ GPU精粹3(附光盘1张)](http://ec4.images-amazon.com/images/I/51orWhSRQrL._AA200_.jpg)
+
+和前作一样，目前该书也是清华大学出版社出版的，亚马逊上已经可以[订购](http://www.amazon.cn/mn/detailApp/ref=sr_1_fkmr1_1?_encoding=UTF8&qid=1276055859&asin=B003NVLR1E&sr=8-1-fkmr1)，China-pub也已经[到货](http://www.china-pub.com/51142)。我暂时没有计划购买此书，一来是已经不做图形学的东西了，而来是所讲的东西需要开发者有很多丰富的图形编程经验才行。还是先把前几本书看完再说咯。

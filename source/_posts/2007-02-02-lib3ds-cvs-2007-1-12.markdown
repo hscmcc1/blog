@@ -1,0 +1,25 @@
+---
+author: hesicong
+comments: true
+date: 2007-02-02 07:34:58+00:00
+layout: post
+slug: lib3ds-cvs-2007-1-12
+title: lib3ds-cvs-2007-1-12
+wordpress_id: 125
+categories:
+- 其他
+tags:
+- lib3ds
+---
+
+lib3ds is a 3ds file format loader. See http://lib3ds.sourceforge.net for detail.
+Because the source code tarball download from lib3ds.sourceforge.net have so many bugs, so I checkout a latest CVS version and recompiled it with VS2003. It works very well.
+Due to it's lack of documents, I use Doxygen to generate a very good documents.
+And here is the file info:
+
+CVS Checkout date: 2007-1-12
+Visual Studio 2003 Rebuild version
+Add full documents to lib3ds. See documents.chm
+Link: [download id="16"]
+
+Document: [download id="17"]

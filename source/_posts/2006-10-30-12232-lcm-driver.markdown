@@ -1,0 +1,481 @@
+---
+author: hesicong
+comments: true
+date: 2006-10-30 04:53:25+00:00
+layout: post
+slug: 12232-lcm-driver
+title: 12232 LCM Driver
+wordpress_id: 80
+categories:
+- 其他
+tags:
+- '12232'
+- 单片机
+---
+
+自己写的12232LCM模块的驱动代码，实现了基本的功能。
+
+```
+//==============================================================
+//12232.h
+//==============================================================
+#ifndef __12232Driver_H
+#define __12232Driver_H
+void LCD_Init(void);
+void LCD_Reset(void);
+void LCD_FillAll(void);
+void LCD_ClearAll(void);
+void LCD_WriteCmd(unsigned char cmd);
+void LCD_WriteCmd1(unsigned char cmd);
+void LCD_WriteCmd2(unsigned char cmd);
+void LCD_SetColumn(unsigned char column);
+void LCD_SetColumn1(unsigned char column);
+void LCD_SetColumn2(unsigned char column);
+void LCD_SetPage(unsigned char page);
+void LCD_SetPage1(unsigned char page);
+void LCD_SetPage2(unsigned char page);
+void LCD_WriteData(unsigned char d);
+void LCD_WriteData1(unsigned char d);
+void LCD_WriteData2(unsigned char d);
+unsigned char LCD_ReadData1(void);
+unsigned char LCD_ReadData2(void);
+#endif
+
+//==============================================================
+//12232Driver.c
+//==============================================================
+#include
+#include "12232Driver.h"
+//#include
+
+sbit E1=P3^4;
+sbit E2=P3^5;
+sbit A0=P3^7;
+sbit RST=P3^2;
+sbit RW=P3^6;
+
+#define LCD_DISPLAY_ON 		0xAF
+#define LCD_DISPLAY_OFF		0xAE
+#define LCD_START_LINE_0	0xC0	//Set Start Line 0
+#define LCD_DRIVER_NORMAL	0xA4	//Normal display operation
+#define LCD_DRIVER_STATIC	0xA5	//Power Save
+#define LCD_DUTY_32			0xA9
+#define LCD_DUTY_16			0xA8
+#define LCD_RIGHTWARD_OUTPUT	0xA0
+#define LCD_LEFTWARD_OUTPUT		0xA1
+#define LCD_RESET			0xE3
+#define LCD_PAGE_0			0xB8
+#define LCD_RMW 0xE0
+#define LCD_END				0xEE
+#define uchar unsigned char
+//LCD Controller Display and Control Functions
+
+void LCD_Init(void)
+{
+//E1=0;
+//E2=0;
+//Reset
+RST=0;
+RST=1;
+LCD_WriteCmd(LCD_DISPLAY_ON);	//Display On
+LCD_WriteCmd(LCD_START_LINE_0);		//Start = 0
+LCD_WriteCmd(LCD_DRIVER_NORMAL);		//Driver
+LCD_WriteCmd(LCD_DUTY_32);		//Duty 32
+LCD_WriteCmd(LCD_RIGHTWARD_OUTPUT);		//ADC
+LCD_WriteCmd(LCD_RESET);		//Reset
+LCD_Reset();
+}
+
+void LCD_Reset(void)
+{
+LCD_WriteCmd(LCD_RESET);
+}
+
+void LCD_FillAll(void)
+{
+uchar page,y;
+LCD_WriteCmd(LCD_RMW);
+for(page=0;page<4;page++)
+{
+LCD_SetPage(page);
+LCD_SetColumn(0);
+for(y=0;y<61;y++)
+{
+LCD_WriteData(0xFF);
+}
+LCD_WriteCmd(LCD_END);
+}
+}
+
+void LCD_ClearAll(void)
+{
+uchar page,y;
+LCD_WriteCmd(LCD_RMW);
+for(page=0;page<4;page++)
+{
+LCD_SetPage(page);
+LCD_SetColumn(0);
+for(y=0;y<61;y++)
+{
+LCD_WriteData(0);
+}
+LCD_WriteCmd(LCD_END);
+}
+}
+
+void LCD_WriteCmd(unsigned char cmd)
+{
+LCD_WriteCmd1(cmd);
+LCD_WriteCmd2(cmd);
+return;
+}
+
+void LCD_WriteCmd1(unsigned char cmd)
+{
+RW=0;
+E1=0;
+A0=0;
+P1=cmd;
+E1=1;
+E1=0;
+return;
+}
+
+void LCD_WriteCmd2(unsigned char cmd)
+{
+RW=0;
+E2=0;
+A0=0;
+P1=cmd;
+E2=1;
+E2=0;
+return;
+}
+
+void LCD_WriteData(unsigned char d)
+{
+LCD_WriteData1(d);
+LCD_WriteData2(d);
+return ;
+}
+
+void LCD_WriteData1(unsigned char d)
+{
+RW=0;
+E1=0;
+A0=1;
+P1=d;
+E1=1;
+E1=0;
+return;
+}
+
+void LCD_WriteData2(unsigned char d)
+{
+RW=0;
+E2=0;
+A0=1;
+P1=d;
+E2=1;
+E2=0;
+return;
+}
+
+void LCD_SetColumn(unsigned char d)
+{
+LCD_SetColumn1(d);
+LCD_SetColumn2(d);
+return;
+}
+void LCD_SetColumn1(unsigned char d)
+{
+LCD_WriteCmd1(d);
+return;
+}
+
+void LCD_SetColumn2(unsigned char d)
+{
+LCD_WriteCmd2(d);
+return;
+}
+
+void LCD_SetPage(unsigned char page)
+{
+LCD_SetPage1(page);
+LCD_SetPage2(page);
+return;
+}
+void LCD_SetPage1(unsigned char page)
+{
+page=page%4;
+LCD_WriteCmd1(LCD_PAGE_0+page);	//0x5C
+return;
+}
+
+void LCD_SetPage2(unsigned char page)
+{
+page=page%4;
+LCD_WriteCmd2(LCD_PAGE_0+page);	//0x5C
+return;
+}
+
+unsigned char LCD_ReadData1(void)
+{
+unsigned char d=0;
+RW=1;
+E1=0;
+A0=1;
+P1=0xFF;
+E1=1;
+d=P1;
+E1=0;
+return d;
+}
+
+unsigned char LCD_ReadData2(void)
+{
+unsigned char d=0;
+RW=1;
+```
+
+自己写的12232LCM模块的驱动代码，实现了基本的功能。
+
+```
+//==============================================================
+//12232.h
+//==============================================================
+#ifndef __12232Driver_H
+#define __12232Driver_H
+void LCD_Init(void);
+void LCD_Reset(void);
+void LCD_FillAll(void);
+void LCD_ClearAll(void);
+void LCD_WriteCmd(unsigned char cmd);
+void LCD_WriteCmd1(unsigned char cmd);
+void LCD_WriteCmd2(unsigned char cmd);
+void LCD_SetColumn(unsigned char column);
+void LCD_SetColumn1(unsigned char column);
+void LCD_SetColumn2(unsigned char column);
+void LCD_SetPage(unsigned char page);
+void LCD_SetPage1(unsigned char page);
+void LCD_SetPage2(unsigned char page);
+void LCD_WriteData(unsigned char d);
+void LCD_WriteData1(unsigned char d);
+void LCD_WriteData2(unsigned char d);
+unsigned char LCD_ReadData1(void);
+unsigned char LCD_ReadData2(void);
+#endif
+
+//==============================================================
+//12232Driver.c
+//==============================================================
+#include
+#include "12232Driver.h"
+//#include
+
+sbit E1=P3^4;
+sbit E2=P3^5;
+sbit A0=P3^7;
+sbit RST=P3^2;
+sbit RW=P3^6;
+
+#define LCD_DISPLAY_ON 		0xAF
+#define LCD_DISPLAY_OFF		0xAE
+#define LCD_START_LINE_0	0xC0	//Set Start Line 0
+#define LCD_DRIVER_NORMAL	0xA4	//Normal display operation
+#define LCD_DRIVER_STATIC	0xA5	//Power Save
+#define LCD_DUTY_32			0xA9
+#define LCD_DUTY_16			0xA8
+#define LCD_RIGHTWARD_OUTPUT	0xA0
+#define LCD_LEFTWARD_OUTPUT		0xA1
+#define LCD_RESET			0xE3
+#define LCD_PAGE_0			0xB8
+#define LCD_RMW 0xE0
+#define LCD_END				0xEE
+#define uchar unsigned char
+//LCD Controller Display and Control Functions
+
+void LCD_Init(void)
+{
+//E1=0;
+//E2=0;
+//Reset
+RST=0;
+RST=1;
+LCD_WriteCmd(LCD_DISPLAY_ON);	//Display On
+LCD_WriteCmd(LCD_START_LINE_0);		//Start = 0
+LCD_WriteCmd(LCD_DRIVER_NORMAL);		//Driver
+LCD_WriteCmd(LCD_DUTY_32);		//Duty 32
+LCD_WriteCmd(LCD_RIGHTWARD_OUTPUT);		//ADC
+LCD_WriteCmd(LCD_RESET);		//Reset
+LCD_Reset();
+}
+
+void LCD_Reset(void)
+{
+LCD_WriteCmd(LCD_RESET);
+}
+
+void LCD_FillAll(void)
+{
+uchar page,y;
+LCD_WriteCmd(LCD_RMW);
+for(page=0;page<4;page++)
+{
+LCD_SetPage(page);
+LCD_SetColumn(0);
+for(y=0;y<61;y++)
+{
+LCD_WriteData(0xFF);
+}
+LCD_WriteCmd(LCD_END);
+}
+}
+
+void LCD_ClearAll(void)
+{
+uchar page,y;
+LCD_WriteCmd(LCD_RMW);
+for(page=0;page<4;page++)
+{
+LCD_SetPage(page);
+LCD_SetColumn(0);
+for(y=0;y<61;y++)
+{
+LCD_WriteData(0);
+}
+LCD_WriteCmd(LCD_END);
+}
+}
+
+void LCD_WriteCmd(unsigned char cmd)
+{
+LCD_WriteCmd1(cmd);
+LCD_WriteCmd2(cmd);
+return;
+}
+
+void LCD_WriteCmd1(unsigned char cmd)
+{
+RW=0;
+E1=0;
+A0=0;
+P1=cmd;
+E1=1;
+E1=0;
+return;
+}
+
+void LCD_WriteCmd2(unsigned char cmd)
+{
+RW=0;
+E2=0;
+A0=0;
+P1=cmd;
+E2=1;
+E2=0;
+return;
+}
+
+void LCD_WriteData(unsigned char d)
+{
+LCD_WriteData1(d);
+LCD_WriteData2(d);
+return ;
+}
+
+void LCD_WriteData1(unsigned char d)
+{
+RW=0;
+E1=0;
+A0=1;
+P1=d;
+E1=1;
+E1=0;
+return;
+}
+
+void LCD_WriteData2(unsigned char d)
+{
+RW=0;
+E2=0;
+A0=1;
+P1=d;
+E2=1;
+E2=0;
+return;
+}
+
+void LCD_SetColumn(unsigned char d)
+{
+LCD_SetColumn1(d);
+LCD_SetColumn2(d);
+return;
+}
+void LCD_SetColumn1(unsigned char d)
+{
+LCD_WriteCmd1(d);
+return;
+}
+
+void LCD_SetColumn2(unsigned char d)
+{
+LCD_WriteCmd2(d);
+return;
+}
+
+void LCD_SetPage(unsigned char page)
+{
+LCD_SetPage1(page);
+LCD_SetPage2(page);
+return;
+}
+void LCD_SetPage1(unsigned char page)
+{
+page=page%4;
+LCD_WriteCmd1(LCD_PAGE_0+page);	//0x5C
+return;
+}
+
+void LCD_SetPage2(unsigned char page)
+{
+page=page%4;
+LCD_WriteCmd2(LCD_PAGE_0+page);	//0x5C
+return;
+}
+
+unsigned char LCD_ReadData1(void)
+{
+unsigned char d=0;
+RW=1;
+E1=0;
+A0=1;
+P1=0xFF;
+E1=1;
+d=P1;
+E1=0;
+return d;
+}
+
+unsigned char LCD_ReadData2(void)
+{
+unsigned char d=0;
+RW=1;
+E2=0;
+A0=1;
+P1=0xFF;
+E2=1;
+d=P1;
+E2=0;
+return d;
+}
+
+E2=0;
+A0=1;
+P1=0xFF;
+E2=1;
+d=P1;
+E2=0;
+return d;
+}
+```

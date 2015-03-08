@@ -1,0 +1,13 @@
+---
+author: hesicong
+comments: true
+date: 2006-08-13 20:43:40+00:00
+layout: post
+slug: bf2-results
+title: BF2成绩
+wordpress_id: 18
+categories:
+- 生活
+---
+
+[![](http://rank.bf2.com.cn/sig/44380698.png)](http://rank.bf2.com.cn/?page=plr&player=12212)

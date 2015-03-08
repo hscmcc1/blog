@@ -1,0 +1,13 @@
+---
+author: hesicong
+comments: true
+date: 2007-01-22 20:25:10+00:00
+layout: post
+slug: back-to-december-29-2006
+title: 重新回到2006年12月29日
+wordpress_id: 115
+categories:
+- 生活
+---
+
+倒霉啊，今天在弄一个webdisk的时候不小心把网站所有的数据全部删除了，唉，只有一个2006年12月29日的备份，好多文章都没有了，历史又开始了轮回，唉，看来以后要加强备份了。最近怎么总是那么倒霉哦………………~

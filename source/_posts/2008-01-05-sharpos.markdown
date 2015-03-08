@@ -1,0 +1,15 @@
+---
+author: hesicong
+comments: true
+date: 2008-01-05 20:08:26+00:00
+layout: post
+slug: sharpos
+title: SharpOS
+wordpress_id: 294
+categories:
+- 其他
+---
+
+C#能够写操作系统？？？？？？且看下文：
+[http://www.sharpos.org](http://www.sharpos.org)
+
