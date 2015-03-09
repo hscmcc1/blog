@@ -1,6 +1,8 @@
 title: 写个暖宝宝给MAC用
 date: 2015-02-08 16:57:15
-tags: mac,python
+tags:
+- mac
+- python
 ---
 
 冬天好冷，加上mac的金属外壳，更冷。写个暖宝宝给MAC吧，好歹手会不会再冷了。
