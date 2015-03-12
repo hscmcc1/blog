@@ -65,6 +65,9 @@ ClearCase用的是悲观锁机制，一个人锁了文件别人无法取出来�
 
 回过头来，如果考虑到整个团队的水平、学习曲线及平时的管理难度，我认为还是先暂时用着最原始的auto merge吧，虽然有几个难看的commit。
 
+> Updated 2015.3.12
+> 对于这个问题，按照git的习惯当feature分支被合并进master以后，以为你的工作已经完成，所以这个分支也就必须要删除了。然后如果后需要新增一些工作或者修改，则需要重新啦分支。这样就可以避免这样的问题了。
+
 总之，我们用工具是为了生活更美好。如果这个事情把问题搞的越来越复杂复杂，或者为了炫耀自己熟知这个命令的n多个坑，而你不知道，我认为这和回字的三种写法(回、囘、囬)是一样的道理。
 
 一般来讲，从哲学上说，简单的东西一般是对的([http://en.wikipedia.org/wiki/Occam's_razor](http://en.wikipedia.org/wiki/Occam's_razor))。最后，分享一个Atlassian Blogs上的一篇博客([http://blogs.atlassian.com/2013/10/git-team-workflows-merge-or-rebase/](http://blogs.atlassian.com/2013/10/git-team-workflows-merge-or-rebase/))作为结尾吧。没时间看的，你可以只看Decisions, decisions, decisions: What do you value most部分。
