@@ -14,7 +14,7 @@
     "hexo-generator-index": "^0.1.0",
     "hexo-generator-sitemap": "^1.0.1",
     "hexo-generator-tag": "^0.1.0",
-    "hexo-git-backup": "0.0.9",
+    "hexo-git-backup": "^0.0.9",
     "hexo-renderer-coffeescript": "^0.1.0",
     "hexo-renderer-ejs": "^0.1.0",
     "hexo-renderer-jade": "^0.1.0",
