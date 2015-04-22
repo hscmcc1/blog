@@ -101,5 +101,7 @@ social:
   linkedin: https://cn.linkedin.com/pub/sicong-he/27/9b3/b71
 
 duoshuo_shortname: april1985
-icon_font: fifty-shades
+#icon_font: fifty-shades
 baidu_analytics: 20a80b71e73a6be5492acd47b057c861
+language: zh-Hans
+scheme: Mist
