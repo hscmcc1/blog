@@ -1,4 +1,6 @@
 hexo clean
 hexo generate
 hexo deploy
-hexo b
+git commit -am "Updated"
+git pull
+git push
