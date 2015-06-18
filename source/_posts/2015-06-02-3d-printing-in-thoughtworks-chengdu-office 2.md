@@ -14,19 +14,19 @@ The Big Hero and the Iron Man’s helmet are quite famous. ThoughtWorks label is
 
 Thingiverse(http://www.thingiverse.com/) has a lot of creative things for us to print. I recommend to download them and try to print for beginners. They really found a lot of interesting things to try.
 
-![Pic1](/images/2015/06/pic1.png)
+![Pic1](/images/2015/06/pic1.jpg)
 
 ###How could it help for our life?
 
 I had one kid had he loves the train the most. I printed him train crossing for the IKEA wood train for more fun, and also a train engine for him. He was very excited about this gift. To my surprise, 2.5-years-old kid now knew how the 3D printer works.  Inline image 2
 
-![Pic2](/images/2015/06/pic2.png)
+![Pic2](/images/2015/06/pic2.jpg)
 
 Another example is to create things. One day my wife told me that our case lock is broken, I used 123D design tool to draw a model and then printed it. It fit good and now the case was fixed.
 
 In the picture below, you can see the battery holder and iPad holder. They are quite useful. I would like to great thanks to the 3D printer to make life easier and happy.
 
-![Pic3](/images/2015/06/pic3.png)
+![Pic3](/images/2015/06/pic3.jpg)
 
 
 ###Next Step
