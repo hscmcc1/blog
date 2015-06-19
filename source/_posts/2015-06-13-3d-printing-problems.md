@@ -12,7 +12,7 @@ tags:
 
 Cura和Slic3r等工具导出的是GCODE格式。GCODE格式使用明文描述路径。Sailfish Firmware只支持X3G文件，是一种二进制文件。由于打印机所使用的CPU速度较慢，处理文件并转换成脉冲比较慢，会影响打印质量。所以使用[GPX](https://github.com/whpthomas/GPX)工具将GCODE转换为X3G后，每个指令所走的位置都已经转换成脉冲，甚至可以对一些路径进行加减速的处理。打印机的CPU就可以直接的读取脉冲并控制电机运动。
 
-#### XY steps/mm矫正
+## XY steps/mm矫正
 在转换的过程中，XY的steps per mm这个参数非常重要，讲的是走一个毫米需要多少的脉冲，如果该值过小，则会少走一些距离，造成距离偏小。这个和机器的结构有一定的关系，牵扯到同步齿的齿数、电机的参数等，[RepRap Calculator](http://prusaprinters.org/calculator/)提供了这个参数的计算器，非常方便。
 
 ![计算器配图](/images/2015/06/calculator.jpg)
@@ -27,7 +27,7 @@ MBot最初用的是17齿的齿轮，和Replicator是一样的。后来经过改�
 
 我的打印机使用88.89，打印出来的距离正确。
 
-#### AB轴喷头纠正
+## AB轴喷头纠正
 喷头的step per mm会对挤出的塑料的多少有影响，在机械结构不变的情况下，该值越大，则挤出的料越多。过多的料称之为过挤出，会造成外观尺寸偏大，内圆半径变小，顶层可见各种重叠的塑料；[挤出过小](http://support.3dverkstan.se/article/23-a-visual-ultimaker-troubleshooting-guide#underextrusion)，会造成外观尺寸变小，内圆半径变大，[顶层可以见各种孔洞](http://support.3dverkstan.se/article/23-a-visual-ultimaker-troubleshooting-guide#pillowing)。正确的喷头参数，会对打印质量造成非常大的影响。
 
 [Calibrate your 3D printer](http://www.thingiverse.com/thing:52946)提供了调整喷头的参数方法，当然这篇文章也提到了如何修正其它参数。还有[一种普遍使用的方式](https://www.youtube.com/watch?v=YUPfBJz3I6Y)是在材料上做好标记，然后走10cm，测量实际走的长度。当然对于不能用print run的打印机，我写了一个[gcode文件](https://github.com/derekhe-3dprinting/print-settings/blob/master/E-calibration.gcode)，执行后会自动走10cm，然后测量实际的长度。我的打印机是正确的，所以对于喷头也不用做过多的处理。
