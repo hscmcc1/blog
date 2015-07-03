@@ -39,7 +39,7 @@ relative_link: false
 future: true
 highlight:
   enable: true
-  line_number: true
+  line_number: false
   tab_replace:
 
 # Category & Tag
@@ -83,14 +83,3 @@ baidusitemap:
   
 tag_generator:
   per_page: 10
-  
-# 主题设置
-avatar: https://avatars1.githubusercontent.com/u/1734077?v=3&s=460
-
-# Social links
-social:
-  github: https://github.com/derekhe
-  weibo: http://weibo.com/h198505
-  linkedin: https://cn.linkedin.com/pub/sicong-he/27/9b3/b71
-
-baidu_analytics: 20a80b71e73a6be5492acd47b057c861
