@@ -5,7 +5,7 @@ tags:
 - linux
 - driver
 ---
-[Github Repo](https://github.com/derekhe/wavesahre-7inch-touchscreen-driver/)
+[Github Repo](https://github.com/derekhe/waveshre-7inch-touchscreen-driver/)
 
 I brought a [WaveShare 7-inch HDMI LCD](http://www.waveshare.net/shop/7inch-HDMI-LCD-B.htm) and it provides a USB touchscreen.
 But the company only provide binary driver and images, which is quite bad. Installing binary driver will break self compiled kernel, and you can't get updated kernels.
