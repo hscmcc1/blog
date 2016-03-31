@@ -62,7 +62,8 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/Themes/
-theme: yilia
+
+theme: apollo
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
