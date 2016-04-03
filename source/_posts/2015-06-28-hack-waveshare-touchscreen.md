@@ -15,6 +15,8 @@ OK. If they company won't want to provide anything, that's fine. I finally find 
 
 Tested using official image: 2015-05-05-raspbian-wheezy.img
 
+<!--more-->
+
 # Install
 ssh into your raspiberry
 

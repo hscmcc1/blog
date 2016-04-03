@@ -12,6 +12,8 @@ Updated:
 由于Google被GFW的问题Android SDK下载速度总是非常的慢，甚至用了[代理服务器](http://www.androiddevtools.cn/)速度也很慢，因为是单线程的。我写了这个工具，可以在线生成需要的SDK的下载链接，这样就可以方便的用你喜欢的工具下载了（迅雷和QQ旋风速度都很不错）。
 如果还不能下载，则可以在下载工具中设置代理服务器，让其进行多线程下载，速度也非常理想。
 
+<!--more-->
+
 This tool help to you generate latest offline down links for Android SDK. This is helpful when you don't have internet access or speed is low.
 
 You can use your favorite download tool to download them. Then put these downloaded files into sdk/temp folder and open Android SDK Manager. Click the items in Android SDK Manager, it will read from your downloaded cache.

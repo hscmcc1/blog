@@ -6,6 +6,8 @@ tags:
 
 Industrial 4.0 is coming, what we will do? We brought a 3D printer 2 months ago and some of the guys here are very interested in how it works and how we can utilise it. To give the answer to them, I had one session these days that introduced the basic steps to use the machine.
 
+<!--more-->
+
 ###What can we print?
 
 The first question they ask: can we build everything? The answer is definitely no, but we can build a lot. 3D printer consumes plastic and builds things layer by layer, so it is constrained by the material. And non-industrial 3D printer’s precision is not so good, so we can’t print too detailed model. Although it is a toy like thing, let’s see what we printed. 
