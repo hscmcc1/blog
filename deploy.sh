@@ -5,7 +5,7 @@ git add .
 git commit -am "Updated"
 git pull
 git push
-cd themes/yilia
+cd themes/apollo
 git add .
 git commit -am "Updated"
 git pull 
