@@ -1,31 +1,80 @@
-title: Why docker use up all your disk space?
-date: 2016-12-09
+title: 摩拜单车爬虫解析——找到API
+date: 2017-02-12
 tags: 
-- docker
+- 摩拜
+- 爬虫
+- 大数据
 ---
 
-I noticed that the docker containers are using more and more disk spaces on host machine. By looking at the disk usage inside docker container, you will not see any disk usage increase. But the aufs file system is increasing.
+>警告：此篇文章仅作为学习研究参考用途，请不要用于非法目的。
 
-I found out that there are two days we can use to clean up the space:
+在上一篇文章[《摩拜单车非官方大数据分析》](http://www.jianshu.com/p/2a20d2a97ac0)中提到了我在春节期间对摩拜单车的数据分析，在后面的系列文章中我将进一步的阐述我的爬虫是如何高效的爬到这些数据的。
 
-1. Restart docker service
-2. Delete the docker container and add it back again.
+# 为什么爬摩拜的数据
 
-But these ways need stop your service and we still don't know the root cause.
+摩拜是最早进入成都的共享单车，每天我从地铁站下来的时候，在APP中能看到很多单车，但走到那里的时候，才发现车并不在那里。有些车不知道藏到了哪里；有些车或许是在高楼的后面，由于有GPS的误差而找不到了；有些车被放到了小区里面，一墙之隔让骑车人无法获得到车。
 
-After a deep search, I finally found that the log file is eating my disk space and docker will not clean or limit the file size by default. My docker container has plenty of logs output to console, so the log file will keep increasing. If I restarted the docker service or recreate docker container, the log is clean up. Fortunately, docker provide us a [option](https://docs.docker.com/engine/admin/logging/overview/) to limit the log size:
+那么有没有一个办法通过获得这些单车的数据，来分析这些车是否变成了僵尸车？是否有人故意放到小区里面让人无法获取呢？
 
-```
---log-opt max-size=[0-9]+[kmg]
---log-opt max-file=[0-9]+
---log-opt labels=label1,label2
---log-opt env=env1,env2
-```
+带着这些问题，我开始了研究如何获取这些数据。
 
-I recreated my container using max-size option to limit the log size to 100M when running docker.
+# 从哪里获得数据
 
-```
-docker run .... --log-opt max-size=100M
-```
+如果你能够看到数据，那么我们总有办法自动化的获取到这些数据。只不过获取数据的方式方法决定了获取数据的效率，对于摩拜单车的数据分析这个任务而言，这个爬虫要能够在短时间内（通常是10分钟左右）获取到更多的数据，对于数据分析才有用处。那么数据来源于哪里？
 
-By doing this, the problem is solved. You can find out more options for log on that page to manage your log.
+最直接的来源是摩拜单车的APP。现代的软件设计都讲究前后端分离，而且服务端会同时服务于APP、网页等。在这种趋势下我们只需要搞清楚软件的HTTP请求就好了。一般而言有以下一些工具可以帮忙：
+
+直接抓包：
+* Wireshark （在路由器或者电脑）
+* Shark for Root (Android)
+
+用代理进行HTTP请求抓包及调试：
+* Fiddler 4
+* Charles
+* Packet Capture (Android)
+
+由于我的手机没有root，在路由器上抓包又太多的干扰，对于https也不好弄。所以只能首先采用Fiddler或者Charles的方式试试。挂上Fiddler的代理，然后在手机端不停的移动位置，看有没有新的请求。但遗憾的是似乎请求都是去拿高德地图的，并没有和摩拜车相关的数据。
+
+那怎么一回事？试试手机端的。换成Packet Capture后果然就有流量了，在请求中找到了我最关心的那个：
+
+![](http://upload-images.jianshu.io/upload_images/4372317-de272f8395d2106f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+这个API请求一看就很显然了，在postman中试了一下能够正确的返回信息，看来就是你了！
+
+# 高兴得太早
+
+连续爬了几天的数据，将数据进行一分析，发现摩拜单车的GPS似乎一直在跳动，有时候跳动会超过几公里的距离，显然不是一个正常的值。
+
+难道是他们的接口做了手脚返回的是假数据？我观察到即便在APP中，单车返回的数据也有跳动。有某一天凌晨到第二天早上，我隔段时间刷新一下我家附近的车，看看是否真的如此。
+
+图片我找不到了，但是观察后得出的结论是，APP中返回的位置确实有问题。有一台车放在一个很偏僻的位置，一会儿就不见了，待会儿又回来了，和我抓下来的数据吻合。而且这个跳动和手机、手机号、甚至移动运营商没有关系，说明这个跳动是摩拜接口的问题，也可以从另一方面解释为什么有时候看到车但其实那里没有车。
+
+这是之前发的一个朋友圈的视频截图，可以看到在营门口附近有一个尖，在那里其实车是停住的，但是GPS轨迹显示短时间内在附近攒动，甚至攒动到很远，又回到那个位置。
+
+![](http://upload-images.jianshu.io/upload_images/4372317-64fd9ff2d577ee19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+这样的数据对于数据分析来讲根本没法用，我差点就放弃了。
+
+# 转机
+
+随着微信小程序的火爆，摩拜单车也在第一时间出了小程序。我一看就笑了，不错，又给我来了一个数据源，试试。用Packet Capture抓了一次数据后很容易确定API，具体过程就不在阐述。抓取后爬取了两三天的数据，发现出现了转机，数据符合正常的单车的轨迹。
+
+剩下事情，就是提高爬虫的效率了。
+
+# 其他尝试
+
+有时候直接分析APP的源代码会很方便的找到API入口，将摩拜的Android端的APP进行反编译，但发现里面除了一些资源文件有用外，其他的文件都是用奇虎360的混淆器加壳的。网上有文章分析如何进行脱壳，但我没有太多时间去钻研，也就算了。
+
+# 也谈API的设计
+
+摩拜单车的API之所以很容易抓取和分析，很大程度上来讲是由于API设计的太简陋：
+
+* 仅使用http请求，使得很容易进行抓包分析
+* 在这些API中都没有对request进行一些加密，使得自己的服务很容易被人利用。
+* 另外微信小程序也是泄露API的一个重要来源，毕竟在APP中request请求可以通过native代码进行加密然后在发出，但在小程序中似乎还没有这样的功能。
+
+如果大家有兴趣，可以试着看一下小蓝单车APP的request，他们使用https请求，对数据的request进行了加密，要抓取到他们的数据难度会增加非常多。
+
+当然了，如果摩拜单车官方并不care数据的事情的话，这样的API设计也是ok的。
+
+下一篇文章将开源爬虫的源代码，敬请期待！如果您觉得文章有用，请打赏一杯咖啡，谢谢：）
