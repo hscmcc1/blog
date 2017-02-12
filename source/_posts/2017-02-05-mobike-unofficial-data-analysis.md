@@ -18,7 +18,7 @@ tags:
 
 数据分析显示，有三成的单车并没有任何移动，这说明这些单车有可能被放在不可获取或者偏僻地方。市民的素质还有待提高啊。
 
-### 出行距离以3公里以下为主 
+### 出行距离以3公里以下为主
 数据分析显示3公里以下的出行距离占据了87.2%，这也十分符合共享单车的定位。100米以下的距离也占据了大量的数据，但认为100米以下的数据为GPS的波动，所以予以排除。
 
 ![出行距离分布](http://upload-images.jianshu.io/upload_images/4372317-949249de77f94715.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -33,13 +33,13 @@ tags:
 ![单车骑行次数](http://upload-images.jianshu.io/upload_images/4372317-c2b03aee9fa7ddca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-### 从单车看城市发展 
+### 从单车看城市发展
 从摩拜单车的热图分布来看，成都已经逐步呈现“双核”发展的态势，城市的新中心天府新区正在聚集更多的人和机会。
 
 
 ![双核发展](http://upload-images.jianshu.io/upload_images/4372317-900aca43266cc17d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-原来的老城区占有大量的单车，在老城区，热图显示在东城区占有更多的单车，可能和这里的商业（春熙路、太古里、万达）及人口密集的小区有直接的联系。 
+原来的老城区占有大量的单车，在老城区，热图显示在东城区占有更多的单车，可能和这里的商业（春熙路、太古里、万达）及人口密集的小区有直接的联系。
 
 ![老城区](http://upload-images.jianshu.io/upload_images/4372317-2c5cc0f5d8bc3ada.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
