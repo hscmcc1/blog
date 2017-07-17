@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://www.april985.com
+url: http://www.april1985.com
 root: /
 permalink: post/:title/
 permalink_defaults:
@@ -56,7 +56,7 @@ time_format: HH:mm:ss
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 20
+per_page: 5
 pagination_dir: page
 
 # Extensions
