@@ -3,8 +3,8 @@ favicon: /favicon.ico
 
 # Nav Menus
 menu:
-    Index: /
-    Archives: /archives
+    我的现在: /
+    我的曾经: /archives
 
 # Nav Shortcut Icons
 nav_icons:
@@ -13,7 +13,9 @@ nav_icons:
 
 # Friend Links
 friend_links:
-    - []
+    - ['GitHub', 'http://github.com/derekhe']
+    - ['简书', 'http://www.jianshu.com/u/b1e713e56ea6']
+    - ['LinkedIn', 'https://www.linkedin.com/in/sicong-he-56a95437/']
 
 # About
 about_info:
@@ -28,4 +30,4 @@ about_info:
 tencent_analytics: 
  
 # Copyright Infomation
-startyear: 2017
+startyear: 2008
